@@ -1,4 +1,7 @@
-/* Default Light Theme */
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: Arial, sans-serif;
   margin: 0;
@@ -63,6 +66,13 @@ section {
 .project-card img {
   width: 100%;
   border-radius: 10px;
+  transition: transform 0.2s, opacity 0.2s;
+  background: #ccc; /* Fallback if image fails */
+}
+
+.project-card:hover img {
+  transform: scale(1.02);
+  opacity: 0.9;
 }
 
 footer {
@@ -86,4 +96,38 @@ body.dark header {
 body.dark .project-card {
   background: #1e1e1e;
   color: #f4f4f9;
+}
+
+/* Focus States for Accessibility */
+nav a:focus,
+#theme-toggle:focus,
+.project-card a:focus {
+  outline: 2px solid #6200ea;
+  outline-offset: 2px;
+}
+
+body.dark nav a:focus,
+body.dark #theme-toggle:focus,
+body.dark .project-card a:focus {
+  outline-color: #bb86fc;
+}
+
+/* Mobile Optimization */
+@media (max-width: 400px) {
+  header {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  nav a {
+    margin: 0 0.5rem;
+  }
+
+  .profile-pic {
+    width: 100px;
+  }
+
+  .projects-grid {
+    grid-template-columns: 1fr; /* Single column on very small screens */
+  }
 }
